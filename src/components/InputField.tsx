@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 // propslara type vermemiz gerekiyor bunun için ilk önce bir interface oluşturup propsa atamamız lazım. setTodo bir fonksiyon.
 interface Props {
@@ -10,6 +10,10 @@ interface Props {
 // propslara Props interface i atamak
 const InputField = ({ todo, setTodo, handleAdd }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   return (
     <form
